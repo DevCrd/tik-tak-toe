@@ -1,33 +1,99 @@
-.square {
-  background: #fff;
-  border: 1px solid #999;
-  float: left;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding: 0;
-  text-align: center;
-  width: 34px;
-}
-
-.board-row:after {
-  clear: both;
-  content: '';
-  display: table;
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(4px);
 }
 
 .status {
-  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-.game {
+.board-row {
   display: flex;
-  flex-direction: row;
+}
+
+.square {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 2rem;
+  font-weight: bold;
+  height: 80px;
+  width: 80px;
+  margin: -0.5px;
+  padding: 0;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.square:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.02);
+  z-index: 1;
+}
+
+.square:active {
+  transform: scale(0.98);
+}
+
+/* Colors for X and O */
+.square:contains("X"), .square:has(text:contains("X")) {
+  color: #61dafb;
+}
+
+/* Since :contains is not standard CSS, we'll handle this in JSX or use a more specific class */
+.square.x-mark {
+  color: #ff4d4d; /* Reddish for X */
+  text-shadow: 0 0 10px rgba(255, 77, 77, 0.3);
+}
+
+.square.o-mark {
+  color: #4db8ff; /* Blueish for O */
+  text-shadow: 0 0 10px rgba(77, 184, 255, 0.3);
 }
 
 .game-info {
-  margin-left: 20px;
+  margin-top: 1rem;
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 1rem;
+}
+
+.game-info ol {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.game-info button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ccc;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.game-info button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
 }
